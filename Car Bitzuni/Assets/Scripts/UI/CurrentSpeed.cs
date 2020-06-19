@@ -16,6 +16,6 @@ public class CurrentSpeed : MonoBehaviour
     }
     void Update()
     {
-        text.text =  "" + controller.speed * 3.6f;
+        text.text =  "" + (controller.speed * 3.6f).ToString("0.00");
     }
 }
