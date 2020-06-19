@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SceneOperator : MonoBehaviour
@@ -10,6 +11,7 @@ public class SceneOperator : MonoBehaviour
     public SceneAsset[] scenes;
     public AudioClip[] tracks = new AudioClip[2];
     private SceneAsset[] chosenScenes = new SceneAsset[2];
+    public UnityEvent OnTrackFinished;
     private scenesTracked[] scenesTrackeds;
 
     private struct scenesTracked 
@@ -51,6 +53,10 @@ public class SceneOperator : MonoBehaviour
     }
     public void LoadNewScene() 
     {
+        if (SceneManager.GetActiveScene().name != "PlayGround")
+        {
+            OnTrackFinished.Invoke();
+        }
         if (scenesTrackeds[0].scene == null)
         {
             if (scenesTrackeds[0].timesPlayed == 0)
@@ -66,7 +72,7 @@ public class SceneOperator : MonoBehaviour
                 scenesTrackeds[0].scene = chosenScenes[0];
             }
         }
-        else 
+        else
         {
             if (scenesTrackeds[1].timesPlayed == 0)
             {
@@ -81,5 +87,6 @@ public class SceneOperator : MonoBehaviour
                 scenesTrackeds[1].scene = chosenScenes[1];
             }
         }
+        DataManager.Instance.Init();
     }
 }

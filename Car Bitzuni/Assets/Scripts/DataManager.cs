@@ -5,36 +5,67 @@ using VehiclePhysics;
 /// <summary>
 /// Need to display data about the AVERAGE_SPEED, MAX_SPEED, TIME (& LAP_TIME if at Circuit) at the end of the game,
 /// </summary>
-
-
-public class DataManager : MonoBehaviour
+[System.Serializable]
+public struct TrackData 
 {
-    public float countDownTimer;
     public float maxSpeed;
     public float averageSpeed;
     public float totalTime;
     public float lapTime;
+}
+
+public class DataManager : MonoBehaviour
+{
+    public static DataManager Instance { get; private set; }
+
+    public TrackData data;
+    public TrackData[] AllTracksData = new TrackData[4];
+    private int dataIndex = 0;
     public VPVehicleController controller;
 
     private float speedCounter;
     private float addTimer;
     private float addCounter;
     private float currentSpeed;
+    public float countDownTimer;
     public bool isCounting = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else 
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
+        Init();
+    }
+    public void AddData() 
+    {
+        AllTracksData[dataIndex] = data;
+        dataIndex ++;
+    }
+    public void Init()
+    {
+        countDownTimer = 4;
+        isCounting = false;
         speedCounter = 0;
-        maxSpeed = 0;
+        data.maxSpeed = 0;
         currentSpeed = 0;
-        averageSpeed = 0;
-        totalTime = 0;
-        lapTime = 0;
+        data.averageSpeed = 0;
+        data.totalTime = 0;
+        data.lapTime = 0;
         addTimer = 0;
         addCounter = 0;
         StartCoroutine(StartCountDown());
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -48,17 +79,17 @@ public class DataManager : MonoBehaviour
                 addCounter++;
             }
             //AverageSpeed
-            averageSpeed = speedCounter / addCounter;
+            data.averageSpeed = speedCounter / addCounter;
 
             //GetMaxSpeed
-            if (currentSpeed > maxSpeed) 
+            if (currentSpeed > data.maxSpeed) 
             {
-                maxSpeed = currentSpeed;
+                data.maxSpeed = currentSpeed;
             }
 
             //RunTimers and Get Lap and total time
-            totalTime += Time.deltaTime;
-            lapTime += Time.deltaTime;
+            data.totalTime += Time.deltaTime;
+            data.lapTime += Time.deltaTime;
         }
     }
     public void TimerRunning(bool isRunning) 
@@ -71,6 +102,7 @@ public class DataManager : MonoBehaviour
         while (countDownTimer >= 1) 
         {
             yield return new WaitForEndOfFrame();
+            controller = FindObjectOfType<VPVehicleController>();
             countDownTimer -= Time.deltaTime;
         }
         TimerRunning(true);

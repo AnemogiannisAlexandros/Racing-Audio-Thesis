@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sprint Race.unity
     guid: d7617cc6e90746748bf442e366e22f0d
+  - enabled: 1
+    path: Assets/Scenes/Laguna_Circuit.unity
+    guid: 114567fe1e0b6de4d9442a2e02bc3499
   m_configObjects: {}

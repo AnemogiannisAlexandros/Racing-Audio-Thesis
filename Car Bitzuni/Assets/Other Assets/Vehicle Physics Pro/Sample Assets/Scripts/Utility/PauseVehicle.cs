@@ -54,7 +54,14 @@ public class PauseVehicle : VehicleBehaviour
 
 	void Update ()
 		{
-		if (Input.GetKeyDown(key)) pause = !pause;
+			if (DataManager.Instance.isCounting)
+			{
+				pause = false;
+			}
+			else 
+			{
+				pause = true;
+			}
 		}
 	}
 
