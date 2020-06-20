@@ -702,6 +702,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
         type: 3}
+      propertyPath: tracks.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: fastTracks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: slowTracks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
       propertyPath: OnTrackFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -725,6 +740,36 @@ PrefabInstance:
       propertyPath: OnTrackFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: tracks.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a424d0809709f6448abe961d5ac14a6, type: 3}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: tracks.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 14fc3a571403ff14c82714a231925dc5, type: 3}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: slowTracks.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 14fc3a571403ff14c82714a231925dc5, type: 3}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: slowTracks.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 483badde1beef884aac442669bb6debf, type: 3}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: fastTracks.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a424d0809709f6448abe961d5ac14a6, type: 3}
+    - target: {fileID: 2658448008883840997, guid: 58d53c86392006c4c8ef3f0e66350436,
+        type: 3}
+      propertyPath: fastTracks.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e516d5b0287a81b4c84dc0dda4379876, type: 3}
     - target: {fileID: 2658448008883841002, guid: 58d53c86392006c4c8ef3f0e66350436,
         type: 3}
       propertyPath: m_LocalPosition.x
