@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class SceneOperator : MonoBehaviour
@@ -17,6 +18,7 @@ public class SceneOperator : MonoBehaviour
     private SceneAsset[] chosenScenes = new SceneAsset[2];
     public UnityEvent OnTrackFinished;
     private scenesTracked[] scenesTrackeds;
+    public Text trackFinished;
 
     private struct scenesTracked 
     {

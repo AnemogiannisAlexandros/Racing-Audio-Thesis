@@ -8,5 +8,6 @@ public class StartRaceUI : MonoBehaviour
     public void StartRace() 
     {
         SceneOperator.Instance.LoadNewScene();
+        this.gameObject.SetActive(false);
     }
 }
