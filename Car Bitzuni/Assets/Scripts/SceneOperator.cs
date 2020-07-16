@@ -19,11 +19,28 @@ public class SceneOperator : MonoBehaviour
     public UnityEvent OnTrackFinished;
     private scenesTracked[] scenesTrackeds;
     public Text trackFinished;
+    public Text remainingLaps;
 
     private struct scenesTracked 
     {
         public SceneAsset scene;
         public int timesPlayed;
+    }
+    public void LoadLapTest() 
+    {
+        DataManager.Instance.Init();
+        SceneManager.LoadScene("LapTests");
+    }
+    public void SetLaps(int laps) 
+    {
+        if (laps != 0) 
+        {
+            remainingLaps.text = "Laps " + (laps) + "/ 2";
+        }
+        else 
+        {
+            remainingLaps.text = "";
+        }
     }
     private void Awake()
     {
@@ -90,11 +107,6 @@ public class SceneOperator : MonoBehaviour
     }
     public void LoadNewScene() 
     {
-        if (SceneManager.GetActiveScene().name != "PlayGround")
-        {
-            OnTrackFinished.Invoke();
-        }
-
         if (scenesTrackeds[0].timesPlayed == 0)
         {
             SceneManager.LoadScene(chosenScenes[0].name);

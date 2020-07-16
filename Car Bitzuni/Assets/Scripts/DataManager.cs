@@ -29,6 +29,7 @@ public class DataManager : MonoBehaviour
     private float currentSpeed;
     public float countDownTimer;
     public bool isCounting = false;
+    public bool countLapTime = false;
 
     private void Awake()
     {
@@ -89,7 +90,10 @@ public class DataManager : MonoBehaviour
 
             //RunTimers and Get Lap and total time
             data.totalTime += Time.deltaTime;
-            data.lapTime += Time.deltaTime;
+            if (countLapTime) 
+            {
+                data.lapTime += Time.deltaTime;
+            }
         }
     }
     public void TimerRunning(bool isRunning) 
@@ -99,12 +103,14 @@ public class DataManager : MonoBehaviour
 
     IEnumerator StartCountDown() 
     {
+        countLapTime = false;
         while (countDownTimer >= 1) 
         {
             yield return new WaitForEndOfFrame();
             controller = FindObjectOfType<VPVehicleController>();
             countDownTimer -= Time.deltaTime;
         }
+        countLapTime = true;
         TimerRunning(true);
     }
     public int GetCountDown() 

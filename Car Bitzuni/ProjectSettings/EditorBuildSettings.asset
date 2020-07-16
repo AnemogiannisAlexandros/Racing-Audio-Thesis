@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ThankYou.unity
     guid: 02aedae955a64594fae0ca1439db977e
+  - enabled: 1
+    path: Assets/Scenes/LapTests.unity
+    guid: ae0645e6330375e45b0528f9505ccae9
   m_configObjects: {}

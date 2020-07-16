@@ -5,11 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
+    public int trackLaps;
+    public int currentlap = 1;
+    public Collider lastCheckpoint;
+    public bool allowFinish=false;
+    private void Start()
+    {
+        if (trackLaps != 0) 
+        {
+            FindObjectOfType<SceneOperator>().SetLaps(trackLaps);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 
         {
-            StartCoroutine(LoadNewScene());
+            if (trackLaps == 0 || currentlap > trackLaps)
+            {
+                StartCoroutine(LoadNewScene());
+                SceneOperator.Instance.OnTrackFinished.Invoke();
+            }
+            else 
+            {
+                currentlap++;
+                FindObjectOfType<SceneOperator>().SetLaps(currentlap);
+                FindObjectOfType<CheckPointManager>().SetCheckpointIndex(0);
+                FindObjectOfType<DataManager>().countLapTime = false;
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            FindObjectOfType<FinishLine>().allowFinish = false;
+            FindObjectOfType<FinishLine>().GetComponent<Collider>().isTrigger = false;
         }
     }
     IEnumerator LoadNewScene() 
