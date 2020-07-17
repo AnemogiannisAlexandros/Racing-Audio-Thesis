@@ -35,7 +35,7 @@ public class SceneOperator : MonoBehaviour
     {
         if (laps != 0) 
         {
-            remainingLaps.text = "Laps " + (laps) + "/ 2";
+            remainingLaps.text = "Lap\n" + (laps) + " / 2";
         }
         else 
         {

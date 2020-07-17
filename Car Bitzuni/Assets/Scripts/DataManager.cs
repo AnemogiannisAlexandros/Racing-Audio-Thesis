@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VehiclePhysics;
 /// <summary>
 /// Need to display data about the AVERAGE_SPEED, MAX_SPEED, TIME (& LAP_TIME if at Circuit) at the end of the game,
@@ -8,10 +9,11 @@ using VehiclePhysics;
 [System.Serializable]
 public struct TrackData 
 {
-    public float maxSpeed;
-    public float averageSpeed;
-    public float totalTime;
-    public float lapTime;
+    public string trackName;
+    public double maxSpeed;
+    public double averageSpeed;
+    public double totalTime;
+    public double lapTime;
 }
 
 public class DataManager : MonoBehaviour
@@ -72,6 +74,8 @@ public class DataManager : MonoBehaviour
     {
         if (isCounting)
         {
+            data.trackName = SceneManager.GetActiveScene().name;
+
             currentSpeed = controller.speed * 3.6f;
            //Average Calculation
             if (addTimer < 2) 
