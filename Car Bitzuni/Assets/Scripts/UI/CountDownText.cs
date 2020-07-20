@@ -12,18 +12,23 @@ public class CountDownText : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
-        man = FindObjectOfType<DataManager>();
+       
+        runOnce = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        man = FindObjectOfType<DataManager>();
         if (!man.isCounting)
         {
+
             text.text = "" + FindObjectOfType<DataManager>().GetCountDown();
         }
         else 
         {
+            Debug.Log("Counting");
+
             if (!runOnce) 
             {
                 StartCoroutine(CountDownTextChanger());
